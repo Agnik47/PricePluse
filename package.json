@@ -9,17 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
+    "mongoose": "^9.0.2",
+    "next": "latest",
+    "nodemailer": "^7.0.12",
     "react": "latest",
     "react-dom": "latest",
-    "next": "latest"
+    "react-responsive-carousel": "^3.2.23",
+    "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
     "@types/node": "latest",
+    "@types/nodemailer": "^7.0.4",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
     "postcss": "latest",
-    "tailwindcss": "latest"
+    "typescript": "latest"
   }
 }

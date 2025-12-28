@@ -2,26 +2,246 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  body {
+    @apply font-inter bg-dark-bg text-dark-text;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.prose {
+  color: inherit;
 }
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Remove outline for cleaner focus states */
+*:focus {
+  outline: none;
+}
+
+/* Custom scrollbar for modern look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Add these utilities to your globals.css */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Smooth transitions */
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
+
+/* Ensure proper image rendering */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+.prose-invert {
+  --tw-prose-body: rgb(226 232 240);
+  --tw-prose-headings: rgb(248 250 252);
+  --tw-prose-lead: rgb(203 213 225);
+  --tw-prose-links: rgb(99 102 241);
+  --tw-prose-bold: rgb(248 250 252);
+  --tw-prose-counters: rgb(148 163 184);
+  --tw-prose-bullets: rgb(71 85 105);
+  --tw-prose-hr: rgb(71 85 105);
+  --tw-prose-quotes: rgb(226 232 240);
+  --tw-prose-quote-borders: rgb(71 85 105);
+  --tw-prose-captions: rgb(148 163 184);
+  --tw-prose-code: rgb(248 250 252);
+  --tw-prose-pre-code: rgb(226 232 240);
+  --tw-prose-pre-bg: rgb(15 23 42);
+  --tw-prose-th-borders: rgb(71 85 105);
+  --tw-prose-td-borders: rgb(71 85 105);
+}
+
+
+@layer utilities {
+  .btn {
+    @apply py-4 px-6 bg-primary hover:bg-primary-indigo transition-all duration-300 rounded-20 text-secondary text-lg font-semibold shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply py-4 px-6 bg-dark-card hover:bg-dark-border transition-all duration-300 rounded-20 text-secondary text-lg font-semibold border border-dark-border;
+  }
+
+  .head-text {
+    @apply mt-4 text-6xl leading-[72px] font-bold tracking-[-1.2px] text-secondary;
+  }
+
+  .section-text {
+    @apply text-primary text-[32px] font-semibold;
+  }
+
+  .small-text {
+    @apply flex gap-2 text-sm font-medium text-accent-yellow;
+  }
+
+  .paragraph-text {
+    @apply text-xl leading-[30px] text-dark-muted;
+  }
+
+  .hero-carousel {
+    @apply relative sm:px-10 py-5 sm:pt-20 pb-5 max-w-[560px] h-[700px] w-full bg-gradient-to-br from-dark-surface to-dark-card rounded-20 sm:mx-auto border border-dark-border shadow-dark-lg;
+  }
+
+  .carousel {
+    @apply flex flex-col-reverse h-[700px];
+  }
+
+  .carousel .control-dots {
+    @apply static !important;
+  }
+
+  .carousel .control-dots .dot {
+    @apply w-[10px] h-[10px] bg-dark-border rounded-full bottom-0 !important;
+  }
+
+  .carousel .control-dots .dot.selected {
+    @apply bg-primary !important;
+  }
+
+  .trending-section {
+    @apply flex flex-col gap-10 px-6 md:px-20 py-24;
+  }
+
+  /* PRODUCT DETAILS PAGE STYLES */
+  .product-container {
+    @apply flex flex-col gap-16 flex-wrap px-6 md:px-20 py-24;
+  }
+
+  .product-image {
+    @apply flex-grow xl:max-w-[50%] max-w-full py-16 border border-dark-border rounded-20 bg-dark-surface;
+  }
+
+  .product-info {
+    @apply flex items-center flex-wrap gap-10 py-6 border-y border-y-dark-border;
+  }
+
+  .product-hearts {
+    @apply flex items-center gap-2 px-3 py-2 bg-dark-card rounded-10 border border-dark-border;
+  }
+
+  .product-stars {
+    @apply flex items-center gap-2 px-3 py-2 bg-dark-card rounded-[27px] border border-dark-border;
+  }
+
+  .product-reviews {
+    @apply flex items-center gap-2 px-3 py-2 bg-dark-card rounded-[27px] border border-dark-border;
+  }
+
+  /* MODAL */
+  .dialog-container {
+    @apply fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-70;
+  }
+
+  .dialog-content {
+    @apply p-6 bg-dark-surface inline-block w-full max-w-md my-8 overflow-hidden text-left align-middle transition-all transform shadow-dark-lg rounded-20;
+  }
+
+  .dialog-head_text {
+    @apply text-secondary text-lg leading-[24px] font-semibold mt-4;
+  }
+
+  .dialog-input_container {
+    @apply px-5 py-3 mt-3 flex items-center gap-2 border border-dark-border rounded-[27px] bg-dark-card;
+  }
+
+  .dialog-input {
+    @apply flex-1 pl-1 border-none bg-transparent text-dark-text text-base focus:outline-none placeholder-dark-muted;
+  }
+
+  .dialog-btn {
+    @apply px-5 py-3 text-secondary text-base font-semibold border border-primary bg-primary hover:bg-primary-indigo transition-all duration-300 rounded-lg mt-8;
+  }
+
+  /* NAVBAR */
+  .nav {
+    @apply flex justify-between items-center px-6 bg-transparent md:px-20 py-6  backdrop-blur-lg border-b border-dark-border;
+  }
+
+  .nav-logo {
+    @apply font-spaceGrotesk text-[24px] text-secondary font-bold;
+  }
+
+  /* PRICE INFO */
+  .price-info_card {
+    @apply flex-1 min-w-[200px] flex flex-col gap-2 border-l-4 border-primary rounded-10 bg-dark-card px-5 py-4 shadow-lg;
+  }
+
+  /* PRODUCT CARD */
+  .product-card {
+    @apply sm:w-[292px] sm:max-w-[292px] w-full flex-1 flex flex-col gap-4 rounded-20 bg-dark-surface border border-dark-border hover:border-primary transition-all duration-300 hover:shadow-xl overflow-hidden;
+  }
+
+  .product-card_img-container {
+    @apply flex-1 relative flex flex-col gap-5 p-4 bg-dark-card;
+  }
+
+  .product-card_img {
+    @apply max-h-[250px] object-contain w-full h-full bg-transparent;
+  }
+
+  .product-title {
+    @apply text-secondary text-xl leading-6 font-semibold truncate px-4;
+  }
+
+  /* SEARCHBAR INPUT */
+  .searchbar-input {
+    @apply flex-1 min-w-[200px] w-full p-4 border border-dark-border rounded-20 bg-dark-card text-dark-text text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-dark-muted;
+  }
+
+  .searchbar-btn {
+    @apply bg-primary hover:bg-primary-indigo border border-primary rounded-20 shadow-dark-lg px-6 py-4 text-secondary text-base font-semibold hover:opacity-90 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-40 transition-all duration-300;
+  }
+
+  .nav-icon {
+    @apply hover:bg-dark-card p-2 rounded-10 transition-all duration-300 cursor-pointer;
+  }
+}
+
