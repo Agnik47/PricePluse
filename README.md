@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <h1>PriceChecker – Amazon Price Tracker</h1>
+  <h1>PricePluse – Amazon Price Tracker</h1>
   <p>An e‑commerce price tracking app built while learning web scraping, Next.js, and backend fundamentals.</p>
 </div>
 
